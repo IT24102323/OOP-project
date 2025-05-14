@@ -1,4 +1,177 @@
 package com.bookstore.model.wishlist;
 
-public class Wishllist {
+import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class Wishlist {
+    private String wishlistId;
+    private String userId;
+    private String name;
+    private String description;
+    private Date createdDate;
+    private List<WishlistItem> items;
+    private boolean isPublic;
+
+    public Wishlist() {
+        this.createdDate = new Date();
+        this.items = new ArrayList<>();
+        this.isPublic = false;
+    }
+
+    public Wishlist(String wishlistId, String userId, String name) {
+        this.wishlistId = wishlistId;
+        this.userId = userId;
+        this.name = name;
+        this.createdDate = new Date();
+        this.items = new ArrayList<>();
+        this.isPublic = false;
+    }
+
+
+    public Wishlist(String wishlistId, String userId, String name, String description, Date createdDate, boolean isPublic) {
+        this.wishlistId = wishlistId;
+        this.userId = userId;
+        this.name = name;
+        this.description = description;
+        this.createdDate = createdDate;
+        this.items = new ArrayList<>();
+        this.isPublic = isPublic;
+    }
+
+    // Getters and Setters
+    public String getWishlistId() {
+        return wishlistId;
+    }
+
+    public void setWishlistId(String wishlistId) {
+        this.wishlistId = wishlistId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public List<WishlistItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<WishlistItem> items) {
+        this.items = items;
+    }
+
+    public boolean addItem(WishlistItem item) {
+        // Initialize items list if null
+        if (items == null) {
+            items = new ArrayList<>();
+        }
+
+        // Check if the book is already in the wishlist
+        for (WishlistItem existingItem : items) {
+            if (existingItem.getBookId().equals(item.getBookId())) {
+                return false; // Book already in wishlist
+            }
+        }
+
+        items.add(item);
+        return true;
+    }
+
+
+    public boolean removeItem(String bookId) {
+        if (items == null) {
+            return false;
+        }
+        return items.removeIf(item -> item.getBookId().equals(bookId));
+    }
+
+
+    public boolean containsBook(String bookId) {
+        if (items == null) {
+            return false;
+        }
+        for (WishlistItem item : items) {
+            if (item.getBookId().equals(bookId)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int getItemCount() {
+        return items != null ? items.size() : 0;
+    }
+
+
+    public boolean isPublic() {
+        return isPublic;
+    }
+
+    public void setPublic(boolean isPublic) {
+        this.isPublic = isPublic;
+    }
+
+    public String toFileString() {
+        return wishlistId + "," +
+                userId + "," +
+                name.replace(",", "{{COMMA}}") + "," +
+                (description != null ? description.replace(",", "{{COMMA}}") : "") + "," +
+                createdDate.getTime() + "," +
+                isPublic;
+    }
+
+    public static Wishlist fromFileString(String fileString) {
+        String[] parts = fileString.split(",");
+        if (parts.length >= 6) {
+            Wishlist wishlist = new Wishlist();
+            wishlist.setWishlistId(parts[0]);
+            wishlist.setUserId(parts[1]);
+            wishlist.setName(parts[2].replace("{{COMMA}}", ","));
+            wishlist.setDescription(parts[3].replace("{{COMMA}}", ","));
+            wishlist.setCreatedDate(new Date(Long.parseLong(parts[4])));
+            wishlist.setPublic(Boolean.parseBoolean(parts[5]));
+            return wishlist;
+        }
+        return null;
+    }
+
+    @Override
+    public String toString() {
+        return "Wishlist{" +
+                "wishlistId='" + wishlistId + '\'' +
+                ", userId='" + userId + '\'' +
+                ", name='" + name + '\'' +
+                ", itemCount=" + getItemCount() +
+                ", isPublic=" + isPublic +
+                '}';
+    }
 }
