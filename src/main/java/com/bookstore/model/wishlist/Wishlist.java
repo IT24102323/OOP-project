@@ -4,7 +4,9 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Represents a user's wishlist
+ */
 public class Wishlist {
     private String wishlistId;
     private String userId;
@@ -14,12 +16,18 @@ public class Wishlist {
     private List<WishlistItem> items;
     private boolean isPublic;
 
+    /**
+     * Default constructor
+     */
     public Wishlist() {
         this.createdDate = new Date();
         this.items = new ArrayList<>();
         this.isPublic = false;
     }
 
+    /**
+     * Constructor with essential fields
+     */
     public Wishlist(String wishlistId, String userId, String name) {
         this.wishlistId = wishlistId;
         this.userId = userId;
@@ -29,7 +37,9 @@ public class Wishlist {
         this.isPublic = false;
     }
 
-
+    /**
+     * Full constructor
+     */
     public Wishlist(String wishlistId, String userId, String name, String description, Date createdDate, boolean isPublic) {
         this.wishlistId = wishlistId;
         this.userId = userId;
@@ -89,6 +99,11 @@ public class Wishlist {
         this.items = items;
     }
 
+    /**
+     * Add an item to this wishlist
+     * @param item the item to add
+     * @return true if the item was added, false if it already exists
+     */
     public boolean addItem(WishlistItem item) {
         // Initialize items list if null
         if (items == null) {
@@ -106,7 +121,11 @@ public class Wishlist {
         return true;
     }
 
-
+    /**
+     * Remove an item from this wishlist
+     * @param bookId the ID of the book to remove
+     * @return true if the item was removed, false if it wasn't found
+     */
     public boolean removeItem(String bookId) {
         if (items == null) {
             return false;
@@ -114,7 +133,11 @@ public class Wishlist {
         return items.removeIf(item -> item.getBookId().equals(bookId));
     }
 
-
+    /**
+     * Check if a book is in this wishlist
+     * @param bookId the ID of the book to check
+     * @return true if the book is in the wishlist
+     */
     public boolean containsBook(String bookId) {
         if (items == null) {
             return false;
@@ -127,11 +150,18 @@ public class Wishlist {
         return false;
     }
 
+    /**
+     * Get the number of items in this wishlist
+     * @return the number of items
+     */
     public int getItemCount() {
         return items != null ? items.size() : 0;
     }
 
-
+    /**
+     * Check if the wishlist is public
+     * @return true if public, false if private
+     */
     public boolean isPublic() {
         return isPublic;
     }
@@ -140,6 +170,9 @@ public class Wishlist {
         this.isPublic = isPublic;
     }
 
+    /**
+     * Convert wishlist to string representation for file storage
+     */
     public String toFileString() {
         return wishlistId + "," +
                 userId + "," +
@@ -149,6 +182,9 @@ public class Wishlist {
                 isPublic;
     }
 
+    /**
+     * Parse wishlist from file string
+     */
     public static Wishlist fromFileString(String fileString) {
         String[] parts = fileString.split(",");
         if (parts.length >= 6) {
