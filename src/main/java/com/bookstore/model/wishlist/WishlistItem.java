@@ -2,9 +2,7 @@ package com.bookstore.model.wishlist;
 
 import java.util.Date;
 
-/**
- * Represents an item in a wishlist
- */
+
 public class WishlistItem {
     private String wishlistId;
     private String bookId;
@@ -12,17 +10,13 @@ public class WishlistItem {
     private int priority; // 1-5, where 5 is highest priority
     private Date addedDate;
 
-    /**
-     * Default constructor
-     */
+
     public WishlistItem() {
         this.addedDate = new Date();
         this.priority = 3; // Default medium priority
     }
 
-    /**
-     * Constructor with essential fields
-     */
+
     public WishlistItem(String wishlistId, String bookId) {
         this.wishlistId = wishlistId;
         this.bookId = bookId;
@@ -30,9 +24,6 @@ public class WishlistItem {
         this.priority = 3; // Default medium priority
     }
 
-    /**
-     * Full constructor
-     */
     public WishlistItem(String wishlistId, String bookId, String notes, int priority, Date addedDate) {
         this.wishlistId = wishlistId;
         this.bookId = bookId;
@@ -82,11 +73,7 @@ public class WishlistItem {
         this.addedDate = addedDate;
     }
 
-    /**
-     * Validate priority is between 1 and 5
-     * @param priority the priority level to validate
-     * @return a valid priority level (between 1 and 5)
-     */
+
     private int validatePriority(int priority) {
         if (priority < 1) {
             return 1;
@@ -96,10 +83,7 @@ public class WishlistItem {
         return priority;
     }
 
-    /**
-     * Get priority label based on priority value
-     * @return String representation of priority
-     */
+    ]
     public String getPriorityLabel() {
         switch(priority) {
             case 1: return "Very Low";
@@ -111,9 +95,7 @@ public class WishlistItem {
         }
     }
 
-    /**
-     * Convert wishlist item to string representation for file storage
-     */
+
     public String toFileString() {
         return wishlistId + "," +
                 bookId + "," +
@@ -122,9 +104,7 @@ public class WishlistItem {
                 addedDate.getTime();
     }
 
-    /**
-     * Parse wishlist item from file string
-     */
+
     public static WishlistItem fromFileString(String fileString) {
         try {
             String[] parts = fileString.split(",");
