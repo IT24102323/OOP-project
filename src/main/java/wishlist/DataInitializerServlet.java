@@ -17,9 +17,7 @@ import com.bookstore.model.book.BookManager;
 import com.bookstore.model.book.EBook;
 import com.bookstore.model.book.PhysicalBook;
 
-/**
- * Servlet that initializes sample data on application startup
- */
+
 @WebServlet(urlPatterns = "/init-data", loadOnStartup = 1)
 public class DataInitializerServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
