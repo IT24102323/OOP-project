@@ -24,7 +24,7 @@ public class ViewReviewsServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        // Get book ID
         String bookId = request.getParameter("bookId");
 
         if (ValidationUtil.isNullOrEmpty(bookId)) {
@@ -32,7 +32,7 @@ public class ViewReviewsServlet extends HttpServlet {
             return;
         }
 
-
+        // Get book details
         BookManager bookManager = new BookManager(getServletContext());
         Book book = bookManager.getBookById(bookId);
 
@@ -42,16 +42,16 @@ public class ViewReviewsServlet extends HttpServlet {
             return;
         }
 
-
+        // Get review manager
         ReviewManager reviewManager = new ReviewManager(getServletContext());
 
-
+        // Get reviews for this book
         List<Review> reviews = reviewManager.getBookReviews(bookId);
 
-
+        // Get review statistics
         Map<String, Object> reviewStats = reviewManager.getReviewStatistics(bookId);
 
-
+        // Check if the current user has reviewed this book
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("userId") != null) {
             String userId = (String) session.getAttribute("userId");
@@ -62,12 +62,12 @@ public class ViewReviewsServlet extends HttpServlet {
             request.setAttribute("hasReviewed", false);
         }
 
-
+        // Set attributes for JSP
         request.setAttribute("book", book);
         request.setAttribute("reviews", reviews);
         request.setAttribute("reviewStats", reviewStats);
 
-
+        // Forward to reviews page
         request.getRequestDispatcher("/review/book-reviews.jsp").forward(request, response);
     }
 }
