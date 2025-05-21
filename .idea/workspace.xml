@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="feb1dcc9-6875-49cf-9f71-395146a9f0ac" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/order/src/main/java/com/oop/order/controller/ReceiptController.java" afterDir="false" />
-    </list>
+    <list default="true" id="feb1dcc9-6875-49cf-9f71-395146a9f0ac" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,7 +35,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "Order-Management",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/THIQA ZIBRIJ/Desktop/Project Clone/OOP-project/order/src/main/java/com/oop/order/controller",
+    "last_opened_file_path": "C:/Users/THIQA ZIBRIJ/Desktop/Project Clone/OOP-project/order/src/main/java/com/oop/order",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -48,11 +46,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\THIQA ZIBRIJ\Desktop\Project Clone\OOP-project\order\src\main\java\com\oop\order" />
       <recent name="C:\Users\THIQA ZIBRIJ\Desktop\Project Clone\OOP-project\order\src\main\java\com\oop\order\controller" />
       <recent name="C:\Users\THIQA ZIBRIJ\Desktop\Project Clone\OOP-project" />
       <recent name="C:\Users\THIQA ZIBRIJ\Desktop\Project Clone\OOP-project\src\main\webapp\order" />
       <recent name="C:\Users\THIQA ZIBRIJ\Desktop\Project Clone\OOP-project\src\main\java\com\bookstore\servlet\order" />
-      <recent name="C:\Users\THIQA ZIBRIJ\Desktop\Project Clone\OOP-project\src\main\java\com\bookstore\model\order" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\THIQA ZIBRIJ\Desktop\Project Clone\OOP-project\src\main\java\com\bookstore\model\order" />
@@ -75,7 +73,7 @@
       <option name="presentableId" value="Default" />
       <updated>1747732083685</updated>
       <workItem from="1747732084826" duration="1736000" />
-      <workItem from="1747825464924" duration="1074000" />
+      <workItem from="1747825464924" duration="1421000" />
     </task>
     <servers />
   </component>
